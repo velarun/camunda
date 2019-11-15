@@ -5,7 +5,8 @@ node {
         script {
             echo "-------------------------------------------------------"
             echo "Building full cURL string:"
-            curl -X POST -s http://localhost:7234/workflows/v1/definitions/ -F taskService="TMSv1" -F bpmnFile=""
+            def response = sh(script: 'curl -X POST -s http://localhost:7234/workflows/v1/definitions/ -F taskService="TMSv1" -F bpmnFile=""', returnStdout: true)
+            echo response
             echo "-------------------------------------------------------"
         }
     }
