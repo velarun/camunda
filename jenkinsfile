@@ -3,7 +3,7 @@
 node {
     stage('build') {
         script {
-            def disk_size = sh(script: "df / --output=avail | tail -1", returnStdout: true).trim() as Integer
+            def disk_size = sh(script: "curl -X POST http://localhost:8081/api/v1/triggerworkflowsync -H 'Content-Type: application/json' -d '{"limit": 10,"jobidentifier": "AMCSJOB"}'", returnStdout: true).trim()
             println("disk_size = ${disk_size}")
         }
     }
