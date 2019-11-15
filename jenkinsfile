@@ -2,7 +2,17 @@
 
 node {
     stage('Build') {
-        echo 'Building....'
+        script {
+            echo "-------------------------------------------------------"
+            echo "Building full cURL string:"
+            def curlOutput = "curl -X POST --write-out \"StatusCode=%{http_code}\" --url http://localhost:7234/workflows/v1/definitions/ -H Accept:application/json taskService=\"TMSv1\" -F bpmnFile=\"\""
+            echo "Final cURL string:"
+            echo curlOutput
+            echo "-------------------------------------------------------"
+            echo "Saving cURL string into env variable \"CAMUNDA_CURL\":"
+            env.CAMUNDA_CURL = curlOutput
+            echo "-------------------------------------------------------"
+        }
     }
     stage('Test') {
         echo 'Testing....'
