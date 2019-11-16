@@ -5,7 +5,8 @@ node {
         script {
             //def disk_size = sh(script: "curl -X POST http://host.docker.internal:8081/api/v1/triggerworkflowsync -H 'Content-Type: application/json' -d '{\"limit\": 10,\"jobidentifier\": \"AMCSJOB\"}'", returnStdout: true).trim()
             //println("disk_size = ${disk_size}")
-            def changeLogSets = currentBuild.changeSets
+            def changeLogSets = currentBuild.rawBuild.changeSets
+            println("changeLogSets = ${changeLogSets}")
             for (int i = 0; i < changeLogSets.size(); i++) {
                 def entries = changeLogSets[i].items
                 for (int j = 0; j < entries.length; j++) {
