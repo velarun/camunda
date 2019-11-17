@@ -4,7 +4,7 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>SequenceFlow_0fm50fz</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="sanity_bpmn" name="Sanity bpmn">
+    <bpmn:userTask id="sanity_bpmn" name="sanity bpmn">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="workType">sanity</camunda:inputParameter>
